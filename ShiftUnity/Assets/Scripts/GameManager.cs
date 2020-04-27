@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
     Text timer;
     [SerializeField]
     Text score;
-    [SerializeField]
-    Text speed;
     int earned;
     int mins, secs;
 
@@ -34,8 +32,6 @@ public class GameManager : MonoBehaviour
         }
 
         score.text = earned.ToString();
-        speed.text = Mathf.RoundToInt(GameObject.Find("Car").GetComponent<CarController>().currentSpeed).ToString();
-
     }
 
     public void EndShift()
