@@ -16,19 +16,18 @@ public class CarController : MonoBehaviour
     public Transform WheelRRtrans;
     public Vector3 eulertest;
     [SerializeField]
-    float maxFwdSpeed = -50000;
+    float maxFwdSpeed = -5000;
     [SerializeField]
-    float maxBwdSpeed = 10000f;
+    float maxBwdSpeed = 1000f;
     float gravity = 9.8f;
     private bool braked = false;
     private float maxBrakeTorque = 5000;
     private Rigidbody rb;
     public Transform centreofmass;
     [SerializeField]
-    private float maxTorque = 90000;
+    private float maxTorque = 9000;
     DeliveryManager dm;
     GameManager gm;
-    public float speed;
     private GameObject _Inventory;
 
     void Start()
@@ -61,7 +60,6 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        speed = WheelFR.rpm / 60 * 360 * Time.deltaTime;
         HandBrake();
         //for tyre rotate
         WheelFRtrans.Rotate(0, WheelFR.rpm / 60 * 360 * Time.deltaTime, 0);
@@ -79,8 +77,8 @@ public class CarController : MonoBehaviour
     }
     void HandBrake()
     {
-        //Debug.Log("brakes " + braked);
-        if (Input.GetButton("Jump"))
+        Debug.Log("brakes " + braked);
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             braked = true;
         }
@@ -91,8 +89,8 @@ public class CarController : MonoBehaviour
         if (braked)
         {
             //rear
-            WheelRL.brakeTorque = maxBrakeTorque * 5000;
-            WheelRR.brakeTorque = maxBrakeTorque * 5000;
+            WheelRL.brakeTorque = maxBrakeTorque * 20000;
+            WheelRR.brakeTorque = maxBrakeTorque * 20000;
             WheelRL.motorTorque = 0;
             WheelRR.motorTorque = 0;
             //front

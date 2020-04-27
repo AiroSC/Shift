@@ -353,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 4764902291197860114, guid: 84e2cd3e7a95f07469c0e73bc849a04c,
         type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -427,7 +427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000030994, y: 79.2}
+  m_AnchoredPosition: {x: 0, y: 128.9}
   m_SizeDelta: {x: 100, y: 17.95}
   m_Pivot: {x: 0.5, y: 0.46655557}
 --- !u!114 &360499352
@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 119.36, y: -16.37}
+  m_AnchoredPosition: {x: 189.6, y: -51.9}
   m_SizeDelta: {x: -14.61, y: 45.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &375796506
@@ -569,8 +569,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463743411}
-  m_LocalRotation: {x: -0.17364816, y: 3.537678e-11, z: -2.0063172e-10, w: 0.9848078}
-  m_LocalPosition: {x: -0.3, y: -7.5, z: 15.4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 662800197}
@@ -798,7 +798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662800196}
   m_LocalRotation: {x: -0, y: -0, z: 2.0372679e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: -15.31, z: 38.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463743412}
@@ -839,7 +839,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -1949,7 +1949,7 @@ PrefabInstance:
     - target: {fileID: 4764902291197860114, guid: 84e2cd3e7a95f07469c0e73bc849a04c,
         type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1989,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -117.74, y: 79.8}
+  m_AnchoredPosition: {x: -208.6, y: 129.5}
   m_SizeDelta: {x: 87.12, y: 17.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613306900
@@ -2470,8 +2470,7 @@ MonoBehaviour:
   maxFwdSpeed: 5000
   maxBwdSpeed: -3000
   centreofmass: {fileID: 2004003497}
-  maxTorque: 3000
-  speed: 0
+  maxTorque: 5000
 --- !u!4 &2004003497
 Transform:
   m_ObjectHideFlags: 0
