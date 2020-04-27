@@ -353,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 4764902291197860114, guid: 84e2cd3e7a95f07469c0e73bc849a04c,
         type: 3}
       propertyPath: m_Mass
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1949,7 +1949,7 @@ PrefabInstance:
     - target: {fileID: 4764902291197860114, guid: 84e2cd3e7a95f07469c0e73bc849a04c,
         type: 3}
       propertyPath: m_Mass
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2458,19 +2458,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a01f9a96b042b449fdfb3ac7f5cbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WheelFL: {fileID: 509781826}
-  WheelFR: {fileID: 805518813}
-  WheelRL: {fileID: 779653612}
-  WheelRR: {fileID: 1864586663}
-  WheelFLtrans: {fileID: 509781825}
-  WheelFRtrans: {fileID: 805518810}
-  WheelRLtrans: {fileID: 779653609}
-  WheelRRtrans: {fileID: 1864586660}
-  eulertest: {x: 0, y: 0, z: 0}
-  maxFwdSpeed: 5000
-  maxBwdSpeed: -3000
-  centreofmass: {fileID: 2004003497}
-  maxTorque: 5000
+  currentSpeed: 0
+  currentVelocity: {x: 0, y: 0, z: 0}
+  axleInfos:
+  - motor: 1
+    steering: 1
+    hasBrakes: 0
+    leftWheel: {fileID: 509781826}
+    rightWheel: {fileID: 805518813}
+  - motor: 0
+    steering: 0
+    hasBrakes: 0
+    leftWheel: {fileID: 779653612}
+    rightWheel: {fileID: 1864586663}
+  maxMotorTorque: 5000
+  maxSteeringAngle: 35
+  currentBrakeTorque: 0
 --- !u!4 &2004003497
 Transform:
   m_ObjectHideFlags: 0

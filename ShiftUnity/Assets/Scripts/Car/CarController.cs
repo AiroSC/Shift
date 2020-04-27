@@ -1,116 +1,131 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
+[System.Serializable]
+public class AxleInfo
+{
+    [Header("Settings")]
+    public bool motor;
+    public bool steering;
+    public bool hasBrakes;
+
+    [Header("References")]
+    public WheelCollider leftWheel;
+    public WheelCollider rightWheel;
+}
 
 public class CarController : MonoBehaviour
 {
-    Vector3 moveDirection = Vector3.zero;
 
-    public WheelCollider WheelFL;
-    public WheelCollider WheelFR;
-    public WheelCollider WheelRL;
-    public WheelCollider WheelRR;
-    public Transform WheelFLtrans;
-    public Transform WheelFRtrans;
-    public Transform WheelRLtrans;
-    public Transform WheelRRtrans;
-    public Vector3 eulertest;
-    [SerializeField]
-    float maxFwdSpeed = -5000;
-    [SerializeField]
-    float maxBwdSpeed = 1000f;
-    float gravity = 9.8f;
-    private bool braked = false;
-    private float maxBrakeTorque = 5000;
+    [Header("Info")]
+    public float currentSpeed;
+    public Vector3 currentVelocity;
+
+    [Header("Settings")]
+    public List<AxleInfo> axleInfos;
+    public float maxMotorTorque = 5000f;
+    public float maxSteeringAngle = 35f;
+    public float currentBrakeTorque = 0f;
+
+    // COMPONENTS
     private Rigidbody rb;
-    public Transform centreofmass;
-    [SerializeField]
-    private float maxTorque = 9000;
     DeliveryManager dm;
     GameManager gm;
-    private GameObject _Inventory;
 
-    void Start()
+
+    //============================================
+    // FUNCTIONS (UNITY)
+    //============================================
+
+    void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         dm = GameObject.Find("OrderManager").GetComponent<DeliveryManager>();
         gm = GameObject.Find("Phone").GetComponent<GameManager>();
-        rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        // BRAKE
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            currentBrakeTorque = 10000f;
+        }
+        else
+        {
+            currentBrakeTorque = 0f;
+        }
+
+        // JUMP
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    rb.AddForce(rb.centerOfMass + new Vector3(0f, 10000f, 0f), ForceMode.Impulse);
+        //}
+
+        // BOOST
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rb.AddForce(transform.forward * 10000f, ForceMode.Impulse);
+        }
     }
 
     void FixedUpdate()
     {
-        if (!braked)
-        {
-            WheelFL.brakeTorque = 0;
-            WheelFR.brakeTorque = 0;
-            WheelRL.brakeTorque = 0;
-            WheelRR.brakeTorque = 0;
-        }
-        //speed of car, Car will move as you will provide the input to it.
+        // SPEED
+        currentVelocity = rb.velocity;
+        currentSpeed = rb.velocity.magnitude;
 
-        WheelRR.motorTorque = maxTorque * Input.GetAxis("Vertical");
-        WheelRL.motorTorque = maxTorque * Input.GetAxis("Vertical");
-        WheelFR.motorTorque = maxTorque * Input.GetAxis("Vertical");
-        WheelFL.motorTorque = maxTorque * Input.GetAxis("Vertical");
-        //changing car direction
-        //Here we are changing the steer angle of the front tyres of the car so that we can change the car direction.
-        WheelFR.steerAngle = 45 * Input.GetAxis("Horizontal");
-        WheelFL.steerAngle = 45 * Input.GetAxis("Horizontal");
+        // INPUT
+        float motor = maxMotorTorque * Input.GetAxis("Vertical");
+        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
-    }
-    private void Update()
-    {
-        HandBrake();
-        //for tyre rotate
-        WheelFRtrans.Rotate(0, WheelFR.rpm / 60 * 360 * Time.deltaTime, 0);
-        WheelFLtrans.Rotate(0, WheelFL.rpm / 60 * 360 * Time.deltaTime, 0);
-        WheelRLtrans.Rotate(0, WheelRL.rpm / 60 * 360 * Time.deltaTime, 0);
-        WheelRRtrans.Rotate(0, WheelRL.rpm / 60 * 360 * Time.deltaTime, 0);
-        //changing tyre direction
-        Vector3 temp = WheelFLtrans.localEulerAngles;
-        Vector3 temp1 = WheelFRtrans.localEulerAngles;
-        temp.y = WheelFL.steerAngle - (WheelFLtrans.localEulerAngles.y);
-        WheelFLtrans.localEulerAngles = temp;
-        temp1.y = WheelFR.steerAngle - WheelFRtrans.localEulerAngles.y;
-        WheelFRtrans.localEulerAngles = temp1;
-        eulertest = WheelFLtrans.localEulerAngles;
-    }
-    void HandBrake()
-    {
-        Debug.Log("brakes " + braked);
-        if (Input.GetKeyDown(KeyCode.Space))
+        foreach (AxleInfo axleInfo in axleInfos)
         {
-            braked = true;
-        }
-        else
-        {
-            braked = false;
-        }
-        if (braked)
-        {
-            //rear
-            WheelRL.brakeTorque = maxBrakeTorque * 20000;
-            WheelRR.brakeTorque = maxBrakeTorque * 20000;
-            WheelRL.motorTorque = 0;
-            WheelRR.motorTorque = 0;
-            //front
-            //WheelFL.brakeTorque = maxBrakeTorque * 5000;
-            //WheelFR.brakeTorque = maxBrakeTorque * 5000;
-            //WheelFL.motorTorque = 0;
-            //WheelFR.motorTorque = 0;
+            if (axleInfo.steering)
+            {
+                axleInfo.leftWheel.steerAngle = steering;
+                axleInfo.rightWheel.steerAngle = steering;
+            }
+
+            if (axleInfo.motor)
+            {
+                axleInfo.leftWheel.motorTorque = motor;
+                axleInfo.rightWheel.motorTorque = motor;
+            }
+
+            if (axleInfo.hasBrakes)
+            {
+                axleInfo.leftWheel.brakeTorque = currentBrakeTorque;
+                axleInfo.rightWheel.brakeTorque = currentBrakeTorque;
+            }
+
+            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
+            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
     }
 
-    public GameObject Inventory
+    //============================================
+    // FUNCTIONS (CUSTOM)
+    //============================================
+
+    // FINDS THE VISUAL WHEEL, CORRECTLY APPLIES THE TRANSFORM
+    public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
-        get
-        {
-            return _Inventory;
-        }
-        set
-        {
-            _Inventory = value;
-        }
+        if (collider.transform.childCount == 0) return;
+
+        // GET WHEEL
+        Transform visualWheel = collider.transform.GetChild(0);
+
+        // GET POS/ROT
+        Vector3 position;
+        Quaternion rotation;
+
+        collider.GetWorldPose(out position, out rotation);
+
+        // APPLY POS/ROT
+        visualWheel.transform.position = position;
+        visualWheel.transform.rotation = rotation;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -142,7 +157,7 @@ public class CarController : MonoBehaviour
             }
         }
 
-        if(other.gameObject.CompareTag("DropOff"))
+        if (other.gameObject.CompareTag("DropOff"))
         {
             Debug.Log("Delivered");
             dm.GeneratePickup();
