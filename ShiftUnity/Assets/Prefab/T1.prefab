@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144393341882904535}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 180.9, y: 7.43996, z: 2.1798868}
   m_LocalScale: {x: 5.3208222, y: 5.3208222, z: 5.3208222}
   m_Children:
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4588105960160904615}
   - component: {fileID: 2462250789540190208}
   m_Layer: 8
-  m_Name: GameObject
+  m_Name: Minimap icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,13 +130,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5079266203573832400}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.035, z: 0}
   m_LocalScale: {x: 0.18794088, y: 0.18794088, z: 0.18794088}
   m_Children: []
   m_Father: {fileID: 1144393341882904532}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &2462250789540190208
 SpriteRenderer:
   m_ObjectHideFlags: 0
