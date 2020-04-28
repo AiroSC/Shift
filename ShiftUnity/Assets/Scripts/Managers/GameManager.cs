@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
     float time;
     [SerializeField]
     Text timer;
@@ -13,12 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text speed;
     int earned;
-    int mins, secs;
+    int mins;
+    int secs;
 
     // Start is called before the first frame update
     void Start()
     {
-        time = 600f;
+        if(time == 0)
+            time = 600f;
         earned = 0;
     }
 
@@ -58,6 +63,10 @@ public class GameManager : MonoBehaviour
         }
 
         timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        if(seconds <= 0)
+        {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+        }
     }
 
     public void Earned(DeliveryObjects.CollectibleType type)
@@ -75,6 +84,14 @@ public class GameManager : MonoBehaviour
             case DeliveryObjects.CollectibleType.T3:
                 earned += Random.Range(51, 100);
                 break;
+        }
+    }
+
+    public int Score
+    {
+        get
+        {
+            return earned;
         }
     }
 }
