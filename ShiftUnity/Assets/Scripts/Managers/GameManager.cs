@@ -2,47 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new GameObject("GameManager").AddComponent<GameManager>();
+            return instance;
+        }
+    }
+
+    private static GameManager instance = null;
+    [SerializeField]
     float time;
-    [SerializeField]
     Text timer;
-    [SerializeField]
     Text score;
-    [SerializeField]
     Text speed;
-    int earned;
-    int mins, secs;
+    static int earned;
+    int mins;
+    int secs;
+
+    private const float gametime = 20.0f;
+
+    void Awake()
+    {
+        //Check if there is an existing instance of this object
+        if ((instance) && (instance.GetInstanceID() != GetInstanceID()))
+            DestroyImmediate(gameObject); //Delete duplicate
+        else
+        {
+            instance = this; //Make this object the only instance
+            DontDestroyOnLoad(gameObject); //Set as do not destroy
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        time = 600f;
+        if(time == 0)
+            time = gametime;
         earned = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
-        UpdateLevelTimer(time);
-
-        if (time < 0)
+        if (SceneManager.GetActiveScene().name == "Game")
         {
-            EndShift();
+            timer = GameObject.Find("Timer").GetComponent<Text>();
+            score = GameObject.Find("Score").GetComponent<Text>();
+            speed = GameObject.Find("Speed").GetComponent<Text>();
+            
+            time -= Time.deltaTime;
+            UpdateLevelTimer(time);
+
+
+            score.text = earned.ToString();
+            if(speed.gameObject)
+            {
+                speed.text = Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "GameOver")
+        {
+            score = GameObject.Find("EndScore").GetComponent<Text>();
+            score.text = earned.ToString();
         }
 
-        score.text = earned.ToString();
-        speed.text = Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
 
     }
 
-    public void EndShift()
-    {
-        Debug.Log("Shift End");
-        //gameover screen
-    }
 
     public void UpdateLevelTimer(float totalSeconds)
     {
@@ -58,6 +92,10 @@ public class GameManager : MonoBehaviour
         }
 
         timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        if(minutes <=0 && seconds <= 0)
+        {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+        }
     }
 
     public void Earned(DeliveryObjects.CollectibleType type)
@@ -76,6 +114,19 @@ public class GameManager : MonoBehaviour
                 earned += Random.Range(51, 100);
                 break;
         }
+    }
+
+    public int Score
+    {
+        get
+        {
+            return earned;
+        }
+    }
+    public void restart()
+    {
+        time += gametime;
+        earned = 0;
     }
 }
 

@@ -42,7 +42,7 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         dm = GameObject.Find("OrderManager").GetComponent<DeliveryManager>();
-        gm = GameObject.Find("Phone").GetComponent<GameManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
