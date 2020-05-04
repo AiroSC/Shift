@@ -1,30 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-
-public class EndShiftManager : MonoBehaviour
+public class Scenemanager : MonoBehaviour
 {
-    [SerializeField]
-    Text score;
-    
-
     // Start is called before the first frame update
+
+    GameManager gm;
     void Start()
     {
-        //score.text = GetComponent<GameManager>().Score.ToString();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+   
     public void Restart()
     {
+        gm.restart();
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 }
