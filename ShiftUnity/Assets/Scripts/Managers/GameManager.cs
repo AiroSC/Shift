@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     int mins;
     int secs;
 
-    private const float gametime = 20.0f;
+    private const float gametime = 120.0f;
 
     void Awake()
     {
