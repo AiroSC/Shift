@@ -62,10 +62,10 @@ public class GameManager : MonoBehaviour
             UpdateLevelTimer(time);
 
 
-            score.text = earned.ToString();
+            score.text = "Earned: " + earned.ToString();
             if(speed.gameObject)
             {
-                speed.text = Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
+                speed.text = "Speed: " +Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
             }
         }
         if (SceneManager.GetActiveScene().name == "GameOver")
