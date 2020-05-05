@@ -825,7 +825,7 @@ PrefabInstance:
     - target: {fileID: 8011508372754098888, guid: 12db28f86da7d874584dcd0704387a55,
         type: 3}
       propertyPath: oList.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12db28f86da7d874584dcd0704387a55, type: 3}
@@ -1830,9 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cc6167c50d18d4798eaaa9f58aef84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 360499352}
-  score: {fileID: 1613306900}
-  speed: {fileID: 0}
+  time: 0
 --- !u!4 &1122364911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1711506752036228757, guid: 12db28f86da7d874584dcd0704387a55,
@@ -2006,6 +2004,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obstacleNode (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011508372754098888, guid: 12db28f86da7d874584dcd0704387a55,
+        type: 3}
+      propertyPath: oList.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12db28f86da7d874584dcd0704387a55, type: 3}
