@@ -53,6 +53,11 @@ public class GameManager : MonoBehaviour
         if(time == 0)
             time = gametime;
         earned = 0;
+
+        timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
+        speed = GameObject.Find("Speed").GetComponent<TextMeshProUGUI>();
+        qualitybar = GameObject.Find("QualityBar").GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -60,10 +65,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Game")
         {
-            timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
-            score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
-            speed = GameObject.Find("Speed").GetComponent<TextMeshProUGUI>();
-            qualitybar = GameObject.Find("QualityBar").GetComponent<Slider>();
+            
 
             time -= Time.deltaTime;
             UpdateLevelTimer(time);
