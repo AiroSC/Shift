@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Temporary
-using UnityEngine.UI;
 
 public class OrderSystem : MonoBehaviour
 {
@@ -15,41 +13,31 @@ public class OrderSystem : MonoBehaviour
 
     char time = '1';
 
-    // Temporary
-    public Toggle Day;
-    public Toggle Noon;
-    public Toggle Night;
-    public Text orderOutput;
-
     // Start is called before the first frame update
     void Start()
     {
         Order = GameObject.Find("OrderManager").GetComponent<Orders>();
-        CallOrder();
+        //CallOrder();
     }
 
-    public void CallOrder()
+    public Orders.Order CallOrder()
     {
+        /*
+         * Only 1 time for now
         if (time != GetTime())
         {
             time = GetTime();
             FillCallList(time);
         }
+        */
 
-        // Testing
-        /* 
-         Debug.Log("CallListSize: " + callListSize);
-         for (int i = 0; i < callListSize - 1; i++)
-         {
-             Debug.Log(CallList[i].name);
-         }
-         */
+        FillCallList('D');
 
         // Random number to determine what order in CallList is given
-
         int call = Random.Range(0, callListSize);
 
-        orderOutput.text = CallList[call].name;
+
+        return (CallList[call]);
 
         
 
@@ -94,6 +82,9 @@ public class OrderSystem : MonoBehaviour
                 }
             }
         }
+
+        /*
+         * Only 1 time of day for now
         else if (time == 'N')
         {
             Debug.Log("Noon Orders: ");
@@ -166,8 +157,11 @@ public class OrderSystem : MonoBehaviour
                 }
             }
         }
+        */
     }
 
+    /*
+     * Only 1 time of day for now
     char GetTime()
     {
         if (Day.isOn) return 'D';
@@ -175,5 +169,5 @@ public class OrderSystem : MonoBehaviour
         if (Night.isOn) return 'T';
         else return '0';
     }
-
+    */
 }

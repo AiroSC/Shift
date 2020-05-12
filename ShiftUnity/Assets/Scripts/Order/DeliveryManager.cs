@@ -9,6 +9,8 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField] GameObject T3;
     [SerializeField] GameObject Drop;
 
+    OrderSystem os;
+
     DropOffSpawn DOS;
     PickUpSpawn PUS;
     int id;
@@ -16,6 +18,7 @@ public class DeliveryManager : MonoBehaviour
     GameObject Prefab;
     private void Start()
     {
+        os = GameObject.Find("OrderManager").GetComponent<OrderSystem>();
         DOS = GameObject.Find("DropOff").GetComponent<DropOffSpawn>();
         PUS = GameObject.Find("PickUp").GetComponent<PickUpSpawn>();
         GeneratePickup();
@@ -39,6 +42,7 @@ public class DeliveryManager : MonoBehaviour
                 break;
         }
         GameObject temp = Instantiate(Prefab, newPickUp.position, newPickUp.rotation );
+        temp.GetComponent<DeliveryObjects>().WhatAmI(os.CallOrder());
     }
     public void GenerateDelivery()
     {
