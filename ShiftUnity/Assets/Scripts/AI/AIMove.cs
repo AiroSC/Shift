@@ -11,6 +11,7 @@ public class AIMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nav = gameObject.GetComponent<NavMeshAgent>();
         destination = Random.insideUnitCircle * 25;
         nav.destination = new Vector3(destination.x, 0, destination.y);
         nav.Move(destination);
@@ -21,7 +22,7 @@ public class AIMove : MonoBehaviour
     { 
         if(nav.remainingDistance <= 0.75)
         {
-            destination = Random.insideUnitCircle * 25;
+            destination = Random.insideUnitCircle * 250;
             nav.destination = new Vector3(destination.x, 0, destination.y);
             nav.Move(destination);
         }
