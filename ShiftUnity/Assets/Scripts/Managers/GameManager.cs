@@ -161,11 +161,11 @@ public class GameManager : MonoBehaviour
     {
         time += gametime;
         earned = 0;
-        qualitybar.value = 100;
+        quality = 100;
     }
     public void NewPickup()
     {
-        qualitybar.value = 100;
+        quality = 100;
     }
 }
 
