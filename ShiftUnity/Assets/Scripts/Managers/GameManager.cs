@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Sunny")
+        if (SceneManager.GetActiveScene().name == "Sunny" || SceneManager.GetActiveScene().name == "Ajaay" || SceneManager.GetActiveScene().name == "Omar" || SceneManager.GetActiveScene().name == "Game")
         {
             //timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
             //score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
