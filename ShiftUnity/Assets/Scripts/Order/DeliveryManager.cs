@@ -9,6 +9,7 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField] GameObject T3;
     [SerializeField] GameObject Drop;
 
+    GameManager gm;
     DropOffSpawn DOS;
     PickUpSpawn PUS;
     int id;
@@ -18,6 +19,8 @@ public class DeliveryManager : MonoBehaviour
     {
         DOS = GameObject.Find("DropOff").GetComponent<DropOffSpawn>();
         PUS = GameObject.Find("PickUp").GetComponent<PickUpSpawn>();
+        gm = GameObject.Find("gameManager").GetComponent<GameManager>();
+
         GeneratePickup();
     }
 
@@ -38,6 +41,7 @@ public class DeliveryManager : MonoBehaviour
                 Prefab = T3;
                 break;
         }
+        gm.NewPickup();
         GameObject temp = Instantiate(Prefab, newPickUp.position, newPickUp.rotation );
     }
     public void GenerateDelivery()

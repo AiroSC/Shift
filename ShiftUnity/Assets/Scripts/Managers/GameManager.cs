@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     Slider qualitybar;
     int quality;
     private const float gametime = 120.0f;
+    private const int T1OrderQualityDrop = 1;
+    private const int T2OrderQualityDrop = 3;
+    private const int T3OrderQualityDrop = 5;
+
 
     void Awake()
     {
@@ -71,7 +75,6 @@ public class GameManager : MonoBehaviour
             UpdateLevelTimer(time);
             score.text = "Earned: " + earned.ToString();
             speed.text = "Speed: " + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
-            qualitybar.value = quality;
             Debuginfo();
         }
         if (SceneManager.GetActiveScene().name == "GameOver")
@@ -91,8 +94,26 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            quality -= 5;
-            yield return new WaitForSeconds(1.0f);
+            switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
+            {
+                case 1:
+                    qualitybar.enabled = true;
+                    quality -= T1OrderQualityDrop;
+                    break;
+                case 2:
+                    qualitybar.enabled = true;
+                    quality -= T2OrderQualityDrop;
+                    break;
+                case 3:
+                    qualitybar.enabled = true;
+                    quality -= T3OrderQualityDrop;
+                    break;
+                default:
+                    qualitybar.enabled = false;
+                    break;
+            }
+            qualitybar.value = quality;
+            yield return new WaitForSeconds(5.0f);
         }
             
     }
@@ -140,7 +161,11 @@ public class GameManager : MonoBehaviour
     {
         time += gametime;
         earned = 0;
-        //quality.value = 100;
+        qualitybar.value = 100;
+    }
+    public void NewPickup()
+    {
+        qualitybar.value = 100;
     }
 }
 
