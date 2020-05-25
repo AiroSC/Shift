@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour
 
     [Header("Settings")]
     public List<AxleInfo> axleInfos;
-    public float maxMotorTorque = 5000f;
+    public float maxMotorTorque = 1000f;
     public float maxSteeringAngle = 35f;
     public float currentBrakeTorque = 0f;
 
@@ -49,7 +49,7 @@ public class CarController : MonoBehaviour
         {
             currentBrakeTorque = 10000f;
         }
-        else
+        if(Input.GetKeyUp(KeyCode.Space))
         {
             currentBrakeTorque = 0f;
         }
