@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711506752036228757}
   - component: {fileID: 8011508372754098888}
+  - component: {fileID: -5971979486627015086}
   m_Layer: 0
   m_Name: obstacleNode
   m_TagString: Untagged
@@ -47,3 +48,19 @@ MonoBehaviour:
   o2: {fileID: 4625109382263280305, guid: 92b9dc88ab436dd4eb3a157a066dd4da, type: 3}
   o3: {fileID: 6271951529962249890, guid: 96f98b4bec9ec8348b870b9ff66d1676, type: 3}
   oList: []
+--- !u!208 &-5971979486627015086
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413441338582811423}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

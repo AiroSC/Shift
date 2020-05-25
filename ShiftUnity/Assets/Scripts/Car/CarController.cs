@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour
 
     [Header("Settings")]
     public List<AxleInfo> axleInfos;
-    public float maxMotorTorque = 5000f;
+    public float maxMotorTorque = 1000f;
     public float maxSteeringAngle = 35f;
     public float currentBrakeTorque = 0f;
 
@@ -33,10 +33,7 @@ public class CarController : MonoBehaviour
     DeliveryManager dm;
     GameManager gm;
 
-
-    //============================================
-    // FUNCTIONS (UNITY)
-    //============================================
+    int pickupTier = 0;
 
     void Awake()
     {
@@ -52,16 +49,10 @@ public class CarController : MonoBehaviour
         {
             currentBrakeTorque = 10000f;
         }
-        else
+        if(Input.GetKeyUp(KeyCode.Space))
         {
             currentBrakeTorque = 0f;
         }
-
-        // JUMP
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    rb.AddForce(rb.centerOfMass + new Vector3(0f, 10000f, 0f), ForceMode.Impulse);
-        //}
 
         // BOOST
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -137,32 +128,57 @@ public class CarController : MonoBehaviour
                 case DeliveryObjects.CollectibleType.T1:
                     Debug.Log("Collide T1");
                     dm.GenerateDelivery();
-                    gm.Earned(DeliveryObjects.CollectibleType.T1);
+                    pickupTier = 1;
                     Destroy(other.gameObject);
                     break;
 
                 case DeliveryObjects.CollectibleType.T2:
                     Debug.Log("Collide T2");
                     dm.GenerateDelivery();
-                    gm.Earned(DeliveryObjects.CollectibleType.T2);
+                    pickupTier = 2;
                     Destroy(other.gameObject);
                     break;
 
                 case DeliveryObjects.CollectibleType.T3:
                     Debug.Log("Collide T3");
                     dm.GenerateDelivery();
-                    gm.Earned(DeliveryObjects.CollectibleType.T3);
+                    pickupTier = 3;
                     Destroy(other.gameObject);
                     break;
             }
         }
-
         if (other.gameObject.CompareTag("DropOff"))
         {
-            Debug.Log("Delivered");
-            dm.GeneratePickup();
-            Destroy(other.gameObject);
+            switch (pickupTier)
+            {
+                case 1:
+                    Debug.Log("DropOff Collide T1");
+                    gm.Earned(DeliveryObjects.CollectibleType.T1);
+                    Destroy(other.gameObject);
+                    break;
 
+                case 2:
+                    Debug.Log("DropOff Collide T2");
+                    gm.Earned(DeliveryObjects.CollectibleType.T2);
+                    Destroy(other.gameObject);
+                    break;
+
+                case 3:
+                    Debug.Log("DropOff Collide T3");
+                    gm.Earned(DeliveryObjects.CollectibleType.T3);
+                    Destroy(other.gameObject);
+                    break;
+            }
+            pickupTier = 0;
+            dm.GeneratePickup();
+        }
+
+    }
+    public int Inventory
+    {
+        get
+        {
+            return pickupTier;
         }
     }
 }
