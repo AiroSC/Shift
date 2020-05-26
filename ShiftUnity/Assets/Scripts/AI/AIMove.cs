@@ -14,7 +14,6 @@ public class AIMove : MonoBehaviour
         nav = gameObject.GetComponent<NavMeshAgent>();
         destination = Random.insideUnitCircle * 25;
         nav.destination = new Vector3(destination.x, 0, destination.y);
-        nav.Move(destination);
     }
 
     // Update is called once per frame
@@ -24,7 +23,6 @@ public class AIMove : MonoBehaviour
         {
             destination = Random.insideUnitCircle * 250;
             nav.destination = new Vector3(destination.x, 0, destination.y);
-            nav.Move(destination);
         }
     }
 }
