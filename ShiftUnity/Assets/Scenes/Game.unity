@@ -637,7 +637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66230893, y: 0.81269485}
   m_AnchorMax: {x: 0.9766911, y: 0.9243052}
-  m_AnchoredPosition: {x: -1.1919861, y: -0.47940063}
+  m_AnchoredPosition: {x: -1.1919556, y: -0.47940063}
   m_SizeDelta: {x: 38, y: 3.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327426774
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cc6167c50d18d4798eaaa9f58aef84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 600
+  time: 10
   timer: {fileID: 306259025}
   score: {fileID: 1161624381}
   speed: {fileID: 0}
@@ -1759,7 +1759,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.4e-44, y: 6e-45, z: 8e-45, w: 1.1754945e-38}
+  m_BoundingSphereOverride: {x: -1.114e-42, y: 6e-45, z: 2.4e-44, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5194,28 +5194,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b79e701cf5fdc124e93988bb0ff151ae, type: 3}
---- !u!1 &1656345177 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3822119341436737209, guid: fe53125e257876c47b757152cbec53a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 3822119340104104990}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &1656345181
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656345177}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &1670195980
 GameObject:
   m_ObjectHideFlags: 0
