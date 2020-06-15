@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   o1: {fileID: -927199367670048503, guid: 08f8ccb5eb801e94f9a5ab121851315f, type: 3}
   o2: {fileID: -927199367670048503, guid: 62f48f24ffabe5c4a94ba27023bb1e1b, type: 3}
-  o3: {fileID: -927199367670048503, guid: af1c34e22e476414e8a642b52a71d5ea, type: 3}
+  o3: {fileID: 6271951529962249890, guid: 96f98b4bec9ec8348b870b9ff66d1676, type: 3}
   oList: []
 --- !u!208 &-5971979486627015086
 NavMeshObstacle:
