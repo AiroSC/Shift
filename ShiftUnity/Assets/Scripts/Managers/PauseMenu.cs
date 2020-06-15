@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-//using System.Runtime.Hosting;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Debug = UnityEngine.Debug;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -35,6 +34,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Debug.Log("pause");
     }
 
     void Pause()
@@ -48,6 +48,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
+        DestroyImmediate(GameObject.Find("gameManager"));
     }
 
     public void QuitGame()
