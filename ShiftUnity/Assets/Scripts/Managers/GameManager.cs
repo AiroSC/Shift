@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         if (time <= 0)
             time = gametime;
         earned = 0;
-        StartCoroutine(UpdateQualityBar());
+        //StartCoroutine(UpdateQualityBar());
 
     }
 
@@ -87,36 +87,36 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("time:" + time);
         Debug.Log("score:" + earned);
-        Debug.Log("speed:" + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed));
+        //Debug.Log("speed:" + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed));
         Debug.Log("quality:" + quality);
     }
-    IEnumerator UpdateQualityBar()
-    {
-        while (true)
-        {
-            switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
-            {
-                case 1:
-                    qualitybar.enabled = true;
-                    quality -= T1OrderQualityDrop;
-                    break;
-                case 2:
-                    qualitybar.enabled = true;
-                    quality -= T2OrderQualityDrop;
-                    break;
-                case 3:
-                    qualitybar.enabled = true;
-                    quality -= T3OrderQualityDrop;
-                    break;
-                default:
-                    qualitybar.enabled = false;
-                    break;
-            }
-            qualitybar.value = quality;
-            yield return new WaitForSeconds(5.0f);
-        }
+    //IEnumerator UpdateQualityBar()
+    //{
+    //    while (true)
+    //    {
+    //        switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
+    //        {
+    //            case 1:
+    //                qualitybar.enabled = true;
+    //                quality -= T1OrderQualityDrop;
+    //                break;
+    //            case 2:
+    //                qualitybar.enabled = true;
+    //                quality -= T2OrderQualityDrop;
+    //                break;
+    //            case 3:
+    //                qualitybar.enabled = true;
+    //                quality -= T3OrderQualityDrop;
+    //                break;
+    //            default:
+    //                qualitybar.enabled = false;
+    //                break;
+    //        }
+    //        qualitybar.value = quality;
+    //        yield return new WaitForSeconds(5.0f);
+    //    }
             
-    }
+    //}
     public void UpdateLevelTimer(float totalSeconds)
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
