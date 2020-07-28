@@ -398,7 +398,7 @@ PrefabInstance:
     - target: {fileID: 5772607210885436522, guid: 8e413f6266b22084ba94b3431bcdeb47,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9
+      value: 3.64
       objectReference: {fileID: 0}
     - target: {fileID: 5772607210885436522, guid: 8e413f6266b22084ba94b3431bcdeb47,
         type: 3}
@@ -1844,7 +1844,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.1280481e+27, y: 6.271143e-39, z: 2.4023743e+20,
+    w: 805.6321}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5305,7 +5306,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670195980}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1f8eff6f84e00a748b9b67c0d0f8d1d5, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3

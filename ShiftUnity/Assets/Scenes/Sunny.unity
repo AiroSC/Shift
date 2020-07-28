@@ -1011,7 +1011,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.44e-43, y: -32, z: -1.0815447e-13, w: -9.752338e-30}
+  m_BoundingSphereOverride: {x: 1.36e-43, y: 4.05e-43, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2546,6 +2546,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772607210885436523, guid: 8e413f6266b22084ba94b3431bcdeb47,
+        type: 3}
+      propertyPath: Trucks.Array.data[0].LeftWheel.HasTorque
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772607210885436523, guid: 8e413f6266b22084ba94b3431bcdeb47,
+        type: 3}
+      propertyPath: Trucks.Array.data[0].RightWheel.HasTorque
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e413f6266b22084ba94b3431bcdeb47, type: 3}
