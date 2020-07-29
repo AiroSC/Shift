@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Slider qualitybar;
     int quality;
-    private const float gametime = 600.0f;
+    private const float gametime = 120.0f;
     private const int T1OrderQualityDrop = 1;
     private const int T2OrderQualityDrop = 3;
     private const int T3OrderQualityDrop = 5;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     {
         if (quality <= 0)
             quality = 100;
-        if (time <= 0)
+        if(time <= 0)
             time = gametime;
         earned = 0;
         //StartCoroutine(UpdateQualityBar());

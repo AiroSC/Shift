@@ -1307,7 +1307,7 @@ PrefabInstance:
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
@@ -1317,7 +1317,7 @@ PrefabInstance:
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
@@ -1332,13 +1332,14 @@ PrefabInstance:
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 9117645912746341885, guid: 7eed815a68cff3847934eaca99d95d5a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1356,6 +1357,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7632285980595282929, guid: 7eed815a68cff3847934eaca99d95d5a, type: 3}
+=======
+    m_RemovedComponents: []
+>>>>>>> parent of 85071c0... city demo nav
   m_SourcePrefab: {fileID: 100100000, guid: 7eed815a68cff3847934eaca99d95d5a, type: 3}
 --- !u!1 &559527024
 GameObject:
