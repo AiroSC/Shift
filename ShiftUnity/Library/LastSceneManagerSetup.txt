@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/GameOver.unity
-=======
-- path: Assets/Scenes/Dylan.unity
->>>>>>> parent of 85071c0... city demo nav
+- path: Assets/Scenes/Sunny.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

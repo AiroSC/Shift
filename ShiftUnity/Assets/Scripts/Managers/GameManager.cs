@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI timer;
     [SerializeField]
     TextMeshProUGUI score;
-    [SerializeField]
-    TextMeshProUGUI speed;
     static int earned;
     int mins;
     int secs;
@@ -69,7 +67,6 @@ public class GameManager : MonoBehaviour
         {
             //timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
             //score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
-            //speed = GameObject.Find("Speed").GetComponent<TextMeshProUGUI>();
             //qualitybar = GameObject.Find("QualityBar").GetComponent<Slider>();
             time -= Time.deltaTime;
             UpdateLevelTimer(time);
