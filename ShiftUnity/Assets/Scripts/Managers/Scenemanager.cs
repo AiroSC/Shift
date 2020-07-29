@@ -9,7 +9,7 @@ public class Scenemanager : MonoBehaviour
     GameManager gm;
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = GameObject.Find("gameManager").GetComponent<GameManager>();
     }
    
     public void Restart()

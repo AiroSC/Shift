@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Slider qualitybar;
     int quality;
-    private const float gametime = 120.0f;
+    private const float gametime = 600.0f;
     private const int T1OrderQualityDrop = 1;
     private const int T2OrderQualityDrop = 3;
     private const int T3OrderQualityDrop = 5;
@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
     {
         if (quality <= 0)
             quality = 100;
-        if(time <= 0)
+        if (time <= 0)
             time = gametime;
         earned = 0;
-        StartCoroutine(UpdateQualityBar());
+        //StartCoroutine(UpdateQualityBar());
 
     }
 
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
             UpdateLevelTimer(time);
             score.text = "Earned: " + earned.ToString();
-            speed.text = "Speed: " + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
+            //speed.text = "Speed: " + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
             Debuginfo();
         }
         if (SceneManager.GetActiveScene().name == "GameOver")
@@ -87,36 +87,36 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("time:" + time);
         Debug.Log("score:" + earned);
-        Debug.Log("speed:" + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed));
+        //Debug.Log("speed:" + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed));
         Debug.Log("quality:" + quality);
     }
-    IEnumerator UpdateQualityBar()
-    {
-        while (true)
-        {
-            switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
-            {
-                case 1:
-                    qualitybar.enabled = true;
-                    quality -= T1OrderQualityDrop;
-                    break;
-                case 2:
-                    qualitybar.enabled = true;
-                    quality -= T2OrderQualityDrop;
-                    break;
-                case 3:
-                    qualitybar.enabled = true;
-                    quality -= T3OrderQualityDrop;
-                    break;
-                default:
-                    qualitybar.enabled = false;
-                    break;
-            }
-            qualitybar.value = quality;
-            yield return new WaitForSeconds(5.0f);
-        }
+    //IEnumerator UpdateQualityBar()
+    //{
+    //    while (true)
+    //    {
+    //        switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
+    //        {
+    //            case 1:
+    //                qualitybar.enabled = true;
+    //                quality -= T1OrderQualityDrop;
+    //                break;
+    //            case 2:
+    //                qualitybar.enabled = true;
+    //                quality -= T2OrderQualityDrop;
+    //                break;
+    //            case 3:
+    //                qualitybar.enabled = true;
+    //                quality -= T3OrderQualityDrop;
+    //                break;
+    //            default:
+    //                qualitybar.enabled = false;
+    //                break;
+    //        }
+    //        qualitybar.value = quality;
+    //        yield return new WaitForSeconds(5.0f);
+    //    }
             
-    }
+    //}
     public void UpdateLevelTimer(float totalSeconds)
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
