@@ -15,8 +15,9 @@ public class Orders : MonoBehaviour
         public float averageDistance;
         public float distanceVariance;
 
+        public int key;
 
-        public Order(string nm, int bP, int rtyD, int rtyN, int rtyNi, float aD, float dV)
+        public Order(string nm, int bP, int rtyD, int rtyN, int rtyNi, float aD, float dV, int oKey)
         {
             name = nm;
             basePrice = bP;
@@ -25,15 +26,19 @@ public class Orders : MonoBehaviour
             rarityNi = rtyNi;
             averageDistance = aD;
             distanceVariance = dV;
+            key = oKey;
         }
     }
-    // Name, Base Price, Rarity (Day, Noon, Night), Average Distancce, Distance Variance
-    static public Order Fries = new Order("French Fries", 10, 15, 0, 0, 0, 0);
-    static public Order Pancake = new Order("Pancakes", 15, 10, 0, 0, 0, 0);
-    static public Order Whiskey = new Order("Whiskey", 25, 0, 0, 10, 0, 0);
-    static public Order Burger = new Order("Burger", 15, 4, 10, 15, 0, 0);
+    // Name, Base Price, Rarity (Day, Noon, Night), Average Distance, Distance Variance
+    static public Order Fries = new Order("French Fries", 10, 15, 0, 0, 0, 0, 0);
+    static public Order Pancake = new Order("Pancakes", 15, 10, 0, 0, 0, 0, 0);
+    static public Order Whiskey = new Order("Whiskey", 25, 0, 0, 10, 0, 0, 0);
+    static public Order Burger = new Order("Burger", 15, 4, 10, 15, 0, 0, 0);
 
     public Order[] OrderArray = {Fries, Pancake, Whiskey, Burger};
+
+    // Empty slot in inventory
+    static public Order Empty = new Order("Empty", 0, 0, 0, 0, 0, 0, 0);
 
     
 
