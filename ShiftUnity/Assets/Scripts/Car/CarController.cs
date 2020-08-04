@@ -33,7 +33,7 @@ public class CarController : MonoBehaviour
     DeliveryManager dm;
     GameManager gm;
 
-    int pickupTier = 0;
+    int pickupTier= 0;
 
     void Awake()
     {
