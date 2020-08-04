@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class OrderSystem : MonoBehaviour
 {
 
+    int orderKey;
+
     public Orders Order;
 
     Orders.Order[] CallList;
@@ -25,9 +27,23 @@ public class OrderSystem : MonoBehaviour
     void Start()
     {
         Order = GameObject.Find("OrderManager").GetComponent<Orders>();
-        CallOrder();
-    }
+        FillCallList('D');
+        orderKey = 0;
+        //Debug.Log(GenerateOrder().name);
 
+    }
+    
+    public Orders.Order GenerateOrder()
+    {
+        Orders.Order generatedOrder;
+        orderKey++;
+        Debug.Log("Order Key: " + orderKey);
+        int call = Random.Range(0, callListSize);
+        generatedOrder = CallList[call];
+        generatedOrder.key = orderKey;
+        return generatedOrder;
+    }
+    
     public void CallOrder()
     {
         if (time != GetTime())
@@ -49,7 +65,7 @@ public class OrderSystem : MonoBehaviour
 
         int call = Random.Range(0, callListSize);
 
-        orderOutput.text = CallList[call].name;
+        Debug.Log(CallList[call].name);
 
         
 
@@ -60,7 +76,7 @@ public class OrderSystem : MonoBehaviour
         callListSize = 0;
         if (time == 'D')
         {
-            Debug.Log("Day Orders: ");
+            //Debug.Log("Day Orders: ");
             Orders.Order[] PossibleOrders;
             int numberOfPossibleOrders = 0;
             int callListIndex = 0;
