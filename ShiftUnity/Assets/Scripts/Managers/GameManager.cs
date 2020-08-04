@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI timer;
     [SerializeField]
     TextMeshProUGUI score;
-    [SerializeField]
-    TextMeshProUGUI speed;
+    //[SerializeField]
+    //TextMeshProUGUI speed;
     static int earned;
     int mins;
     int secs;
