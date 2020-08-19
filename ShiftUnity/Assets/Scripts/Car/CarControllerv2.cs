@@ -28,7 +28,7 @@ public class TruckWheel : System.Object
 
 public class CarControllerv2 : MonoBehaviour
 {
-
+    [Header("Settings")]
     public float TorqueForce = 1000f;
     public float BreakeForce = 2000f;
     public float TorqueFriction = 100f;
@@ -37,6 +37,18 @@ public class CarControllerv2 : MonoBehaviour
     public bool EnableDebug = false;
     public List<CarTruck> Trucks;
     int pickupTier = 0;
+    public Transform CoM;
+
+    [Header("Attributes")]
+    public float TipRate = 0.10f;
+    public float speed;
+    public float fuel = 100f;
+    public float fuelConsumption = 2f;
+    public float damage = 100f;
+    public float damageMultiplier = 2f;
+    public float maintenance = 60.0f;
+    public float Insurance = 100f;
+    public float storage = 30f;
 
     private Rigidbody rigidbody;
     DeliveryManager dm;
@@ -44,6 +56,7 @@ public class CarControllerv2 : MonoBehaviour
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.centerOfMass = CoM.position.normalized;
         dm = GameObject.Find("OrderManager").GetComponent<DeliveryManager>();
         gm = GameObject.Find("gameManager").GetComponent<GameManager>();
     }
@@ -62,8 +75,6 @@ public class CarControllerv2 : MonoBehaviour
     void FixedUpdate()
     {
         rigidbody = GetComponent<Rigidbody>();
-        if (!rigidbody)
-            throw new System.Exception("To work, the car need to have an Rigidbody attach to him!");
 
         foreach (CarTruck truck in Trucks)
         { 
@@ -72,12 +83,10 @@ public class CarControllerv2 : MonoBehaviour
 
             truck.LeftWheel.WheelCollider.GetWorldPose(out position, out rotation);
             //rotation = new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w);
-            rotation *= Quaternion.Euler(90, 0, 90);
             truck.LeftWheel.WheelMesh.transform.rotation = rotation;
 
             truck.RightWheel.WheelCollider.GetWorldPose(out position, out rotation);
             //rotation = new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w);
-            rotation *= Quaternion.Euler(90, 180, 90);
             truck.RightWheel.WheelMesh.transform.rotation = rotation;
 
 
@@ -87,7 +96,16 @@ public class CarControllerv2 : MonoBehaviour
             if (truck.RightWheel.HasTorque)
                 truck.RightWheel.WheelCollider.motorTorque = Input.GetAxis("Vertical") * TorqueForce;
 
-            float currentFriction = Input.GetKey(KeyCode.Space) ? BreakeForce : TorqueFriction - Mathf.Abs(Input.GetAxis("Vertical") * TorqueFriction);
+            float currentFriction;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                currentFriction = BreakeForce;
+            }
+            else
+            {
+                currentFriction = TorqueFriction - Mathf.Abs(Input.GetAxis("Vertical") * TorqueFriction);
+            }
+            //float currentFriction = Input.GetKey(KeyCode.Space) ? BreakeForce : TorqueFriction - Mathf.Abs(Input.GetAxis("Vertical") * TorqueFriction);
 
             if (truck.LeftWheel.HasBreake)
                 truck.LeftWheel.WheelCollider.brakeTorque = currentFriction;

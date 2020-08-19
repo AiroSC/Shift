@@ -24,10 +24,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI timer;
     [SerializeField]
-    TextMeshProUGUI score;
+    public TextMeshProUGUI score;
     //[SerializeField]
     //TextMeshProUGUI speed;
-    static int earned;
+    private float earned;
+    private float tips;
+    private float fuelcost;
+    private float repaircost;
+
+
     int mins;
     int secs;
     [SerializeField]
@@ -41,9 +46,12 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+
         //Check if there is an existing instance of this object
         if ((instance) && (instance.GetInstanceID() != GetInstanceID()))
+        {
             DestroyImmediate(gameObject); //Delete duplicate
+        }
         else
         {
             instance = this; //Make this object the only instance
@@ -65,24 +73,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Sunny" || SceneManager.GetActiveScene().name == "Ajaay" || SceneManager.GetActiveScene().name == "Omar" || SceneManager.GetActiveScene().name == "Game")
+        if(SceneManager.GetActiveScene().name == "Sunny" || SceneManager.GetActiveScene().name == "Game")
         {
-            //timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
-            //score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
+            timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+            score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
             //speed = GameObject.Find("Speed").GetComponent<TextMeshProUGUI>();
-            //qualitybar = GameObject.Find("QualityBar").GetComponent<Slider>();
+            qualitybar = GameObject.Find("QualityBar").GetComponent<Slider>();
             time -= Time.deltaTime;
             UpdateLevelTimer(time);
-            score.text = "Earned: " + earned.ToString();
+            score.text = "Total Earned: " + (earned + tips).ToString();
             //speed.text = "Speed: " + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
             Debuginfo();
         }
-        if (SceneManager.GetActiveScene().name == "GameOver")
-        {
-            //score = GameObject.Find("EndScore").GetComponent<TextMeshProUGUI>();
-            score.text = earned.ToString();
-        }
+       
     }
+
     private void Debuginfo()
     {
         Debug.Log("time:" + time);
@@ -90,33 +95,33 @@ public class GameManager : MonoBehaviour
         //Debug.Log("speed:" + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed));
         Debug.Log("quality:" + quality);
     }
-    //IEnumerator UpdateQualityBar()
-    //{
-    //    while (true)
-    //    {
-    //        switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
-    //        {
-    //            case 1:
-    //                qualitybar.enabled = true;
-    //                quality -= T1OrderQualityDrop;
-    //                break;
-    //            case 2:
-    //                qualitybar.enabled = true;
-    //                quality -= T2OrderQualityDrop;
-    //                break;
-    //            case 3:
-    //                qualitybar.enabled = true;
-    //                quality -= T3OrderQualityDrop;
-    //                break;
-    //            default:
-    //                qualitybar.enabled = false;
-    //                break;
-    //        }
-    //        qualitybar.value = quality;
-    //        yield return new WaitForSeconds(5.0f);
-    //    }
-            
-    //}
+    IEnumerator UpdateQualityBar()
+    {
+        while (true)
+        {
+            switch (GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().Inventory)
+            {
+                case 1:
+                    qualitybar.enabled = true;
+                    quality -= T1OrderQualityDrop;
+                    break;
+                case 2:
+                    qualitybar.enabled = true;
+                    quality -= T2OrderQualityDrop;
+                    break;
+                case 3:
+                    qualitybar.enabled = true;
+                    quality -= T3OrderQualityDrop;
+                    break;
+                default:
+                    qualitybar.enabled = false;
+                    break;
+            }
+            qualitybar.value = quality;
+            yield return new WaitForSeconds(5.0f);
+        }
+
+    }
     public void UpdateLevelTimer(float totalSeconds)
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
@@ -130,7 +135,9 @@ public class GameManager : MonoBehaviour
         timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
         if(minutes <=0 && seconds <= 0)
         {
-            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+               fuelcost = (100-GameObject.FindGameObjectWithTag("Player").GetComponent<CarControllerv2>().fuel)*20;
+               repaircost = GameObject.FindGameObjectWithTag("Player").GetComponent<CarControllerv2>().damage* GameObject.FindGameObjectWithTag("Player").GetComponent<CarControllerv2>().damageMultiplier;
+               SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
     }
     public void Earned(DeliveryObjects.CollectibleType type)
@@ -138,7 +145,9 @@ public class GameManager : MonoBehaviour
         switch (type)
         {
             case DeliveryObjects.CollectibleType.T1:
-                earned += UnityEngine.Random.Range(10, 20);
+                float orderEarnings = UnityEngine.Random.Range(10, 20);
+                earned += orderEarnings;
+                tips += orderEarnings * 0.20f;
                 break;
 
             case DeliveryObjects.CollectibleType.T2:
@@ -150,13 +159,37 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    public int Score
+    public float EARNED
     {
         get
         {
             return earned;
         }
+        
     }
+
+    public float TIPPED
+    {
+        get
+        {
+            return tips;
+        }
+    }
+    public float FUEL
+    {
+        get
+        {
+            return fuelcost;
+        }
+    }
+    public float DAMAGE
+    {
+        get
+        {
+            return repaircost;
+        }
+    }
+
     public void restart()
     {
         time += gametime;

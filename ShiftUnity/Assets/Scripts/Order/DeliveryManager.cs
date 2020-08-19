@@ -26,10 +26,10 @@ public class DeliveryManager : MonoBehaviour
 
     public void GeneratePickup()
     {
-        food = Random.Range(0, 3);
-        id = Random.Range(0, 5);
+        food = Random.Range(0, 10);
+        id = Random.Range(0, 2);
         Transform newPickUp = PUS.GetNodeTransform(id);
-        switch (food)
+        switch (id)
         {
             case 0:
                 Prefab = T1;
@@ -42,12 +42,12 @@ public class DeliveryManager : MonoBehaviour
                 break;
         }
         gm.NewPickup();
-        GameObject temp = Instantiate(Prefab, newPickUp.position, newPickUp.rotation );
+        GameObject temp = Instantiate(Prefab, newPickUp.position, newPickUp.rotation);
     }
     public void GenerateDelivery()
     {
-        food = Random.Range(0, 3);
-        id = Random.Range(0, 5);
+        food = Random.Range(0, 2);
+        id = Random.Range(0, 2);
         Transform newDelivery = PUS.GetNodeTransform(id);
         GameObject temp = Instantiate(Drop, newDelivery.position, newDelivery.rotation);
     }
