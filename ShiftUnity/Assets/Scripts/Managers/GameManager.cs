@@ -21,10 +21,13 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     [SerializeField]
     float time;
+    [Header("UI")]
     [SerializeField]
     TextMeshProUGUI timer;
     [SerializeField]
     public TextMeshProUGUI score;
+    [SerializeField]
+    TextMeshProUGUI tod;
     //[SerializeField]
     //TextMeshProUGUI speed;
     private float earned;
@@ -42,11 +45,10 @@ public class GameManager : MonoBehaviour
     private const int T1OrderQualityDrop = 1;
     private const int T2OrderQualityDrop = 3;
     private const int T3OrderQualityDrop = 5;
-
+    string TOD;
 
     void Awake()
     {
-
         //Check if there is an existing instance of this object
         if ((instance) && (instance.GetInstanceID() != GetInstanceID()))
         {
@@ -79,9 +81,12 @@ public class GameManager : MonoBehaviour
             score = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
             //speed = GameObject.Find("Speed").GetComponent<TextMeshProUGUI>();
             qualitybar = GameObject.Find("QualityBar").GetComponent<Slider>();
+            tod = GameObject.Find("TOD").GetComponent<TextMeshProUGUI>();
+
             time -= Time.deltaTime;
             UpdateLevelTimer(time);
             score.text = "Total Earned: " + (earned + tips).ToString();
+            tod.text = TOD;
             //speed.text = "Speed: " + Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Player").GetComponent<CarController>().currentSpeed).ToString();
             Debuginfo();
         }
@@ -187,6 +192,13 @@ public class GameManager : MonoBehaviour
         get
         {
             return repaircost;
+        }
+    }
+    public string Tod
+    {
+        set
+        {
+            TOD = value;
         }
     }
 

@@ -4,12 +4,11 @@ using UnityEngine;
 
 // Temporary
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OrderSystem : MonoBehaviour
 {
-
     int orderKey;
-
     public Orders Order;
 
     Orders.Order[] CallList;
@@ -22,6 +21,7 @@ public class OrderSystem : MonoBehaviour
     public Toggle Noon;
     public Toggle Night;
     public Text orderOutput;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +29,9 @@ public class OrderSystem : MonoBehaviour
         Order = GameObject.Find("OrderManager").GetComponent<Orders>();
         FillCallList('D');
         orderKey = 0;
-        //Debug.Log(GenerateOrder().name);
-
+        CallOrder();
     }
-    
+
     public Orders.Order GenerateOrder()
     {
         Orders.Order generatedOrder;
@@ -43,7 +42,7 @@ public class OrderSystem : MonoBehaviour
         generatedOrder.key = orderKey;
         return generatedOrder;
     }
-    
+
     public void CallOrder()
     {
         if (time != GetTime())
@@ -65,10 +64,7 @@ public class OrderSystem : MonoBehaviour
 
         int call = Random.Range(0, callListSize);
 
-        Debug.Log(CallList[call].name);
-
-        
-
+        orderOutput.text = CallList[call].name;
     }
     
     void FillCallList(char time)
@@ -76,7 +72,7 @@ public class OrderSystem : MonoBehaviour
         callListSize = 0;
         if (time == 'D')
         {
-            //Debug.Log("Day Orders: ");
+            Debug.Log("Day Orders: ");
             Orders.Order[] PossibleOrders;
             int numberOfPossibleOrders = 0;
             int callListIndex = 0;
@@ -191,5 +187,25 @@ public class OrderSystem : MonoBehaviour
         if (Night.isOn) return 'T';
         else return '0';
     }
-
+    public void PlayGame()
+    {
+        GameManager gm = GameObject.Find("gameManager").GetComponent<GameManager>();
+        //gm.Tod 
+        
+        switch(GetTime())
+        {
+            case 'D':
+                gm.Tod = "Day";
+                break;
+            case 'N':
+                gm.Tod = "Noon";
+                break;
+            case 'T':
+                gm.Tod = "Night";
+                break;
+            default:
+                break;
+        }
+        SceneManager.LoadScene(1);
+    }
 }
