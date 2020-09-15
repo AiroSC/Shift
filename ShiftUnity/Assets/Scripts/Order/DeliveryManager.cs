@@ -10,108 +10,89 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField] GameObject Drop;
 
     GameManager gm;
-    OrderWaypoint ow;
     DropOffSpawn DOS;
     PickUpSpawn PUS;
     int id;
     int food;
     GameObject Prefab;
+    [Header("Day")]
+    public int type1Day = 7;
+    public int type2Day = 6;
+    public int type3Day = 3;
+
+    [Header("Noon")]
+    public int type1Noon = 6;
+    public int type2Noon = 8;
+    public int type3Noon = 3;
+
+    [Header("Night")]
+    public int type1Night = 6;
+    public int type2Night = 6;
+    public int type3Night = 3;
     private void Start()
     {
         DOS = GameObject.Find("DropOff").GetComponent<DropOffSpawn>();
         PUS = GameObject.Find("PickUp").GetComponent<PickUpSpawn>();
         gm = GameObject.Find("gameManager").GetComponent<GameManager>();
-        ow = GameObject.Find("OrderWaypoint").GetComponent<OrderWaypoint>();
 
         GeneratePickup();
     }
 
     public void GeneratePickup()
     {
-        food = Random.Range(0, 11);
+
         id = Random.Range(0, 5);
         Transform newPickUp = PUS.GetNodeTransform(id);
         Debug.Log(food);
-        if ( gm.Tod == "Day")
+        if (gm.Tod == "Day")
         {
-            switch (food)
+            //type1day =7 / type2day = 6 / type3day = 3
+            food = Random.Range(1, (type1Day + type2Day + type3Day));
+            if (food <= type1Day)
             {
-                case 0:                   
-                case 1:                    
-                case 2:                   
-                case 3:                    
-                case 4:                    
-                case 5:                    
-                case 6:
-                    Prefab = T1;
-                    break;
-                case 7:
-                case 8:                   
-                case 9:
-                    Prefab = T2;
-                    break;
-                case 10:                   
-                case 11:
-                    Prefab = T3;
-                    break;
-                default:
-                    Prefab = T1;
-                    break;
+                Prefab = T1;
+            }
+            else if (food <= type1Day + type2Day)
+            {
+                Prefab = T2;
+            }
+            else if (food <= type1Day + type2Day + type3Day)
+            {
+                Prefab = T3;
             }
         }
         if (gm.Tod == "Noon")
         {
-            switch (food)
+            food = Random.Range(1, (type1Noon + type2Noon + type3Noon));
+            if (food <= type1Noon)
             {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                    Prefab = T2;
-                    break;
-                case 7:
-                case 8:
-                case 9:
-                    Prefab = T1;
-                    break;
-                case 10:
-                case 11:
-                    Prefab = T3;
-                    break;
-                default:
-                    Prefab = T2;
-                    break;
+                Prefab = T1;
+            }
+            else if (food <= type1Noon + type2Noon)
+            {
+                Prefab = T2;
+            }
+            else if (food <= type1Noon + type2Noon + type3Noon)
+            {
+                Prefab = T3;
             }
         }
         if (gm.Tod == "Night")
         {
-            switch (food)
+            food = Random.Range(1, (type1Night + type2Night + type3Night));
+            if (food <= type1Night)
             {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    Prefab = T1;
-                    break;
-                case 4:
-                case 5:
-                case 6:                    
-                case 7:
-                    Prefab = T2;
-                    break;
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                    Prefab = T3;
-                    break;
-                default:
-                    Prefab = T3;
-                    break;
+                Prefab = T1;
             }
+            else if (food <= type1Night + type2Night)
+            {
+                Prefab = T2;
+            }
+            else if (food <= type1Night + type2Night + type3Night)
+            {
+                Prefab = T3;
+            }
+
         }
 
         gm.NewPickup();
@@ -124,6 +105,7 @@ public class DeliveryManager : MonoBehaviour
         Transform newDelivery = PUS.GetNodeTransform(id);
         GameObject temp = Instantiate(Drop, newDelivery.position, newDelivery.rotation);
     }
+
     public Transform markPos
     {
         get { return PUS.GetNodeTransform(id); }
