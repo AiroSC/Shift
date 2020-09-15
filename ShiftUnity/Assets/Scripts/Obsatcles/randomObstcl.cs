@@ -19,7 +19,7 @@ public class randomObstcl : MonoBehaviour
         oList.Add(o2);
         oList.Add(o3);
 
-        Instantiate(oList[Random.Range(0, 2)], this.transform);
+        Instantiate(oList[Random.Range(0, 3)], this.transform);
     }
 
     // Update is called once per frame
