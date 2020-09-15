@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659bbcc882b47a64bbd217edfc561cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  o1: {fileID: -927199367670048503, guid: 7b107ef308ba73a4f994e574dd325d09, type: 3}
-  o2: {fileID: 4625109382263280305, guid: 92b9dc88ab436dd4eb3a157a066dd4da, type: 3}
-  o3: {fileID: 6271951529962249890, guid: 96f98b4bec9ec8348b870b9ff66d1676, type: 3}
+  o1: {fileID: 6050159546110934478, guid: e217cdfaea2010a40904374f08552388, type: 3}
+  o2: {fileID: 6050159546110934478, guid: e217cdfaea2010a40904374f08552388, type: 3}
+  o3: {fileID: 6050159546110934478, guid: e217cdfaea2010a40904374f08552388, type: 3}
   oList: []
 --- !u!208 &-5971979486627015086
 NavMeshObstacle:
