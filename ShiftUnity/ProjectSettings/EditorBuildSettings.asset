@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 1c1edaa1a4ee21448aad52aedcb9e6cf
   - enabled: 1
-    path: Assets/Scenes/Dylan.unity
+    path: Assets/Scenes/ShiftSelect.unity
     guid: feaf08d7ab61203438e399463d1f831b
   m_configObjects: {}

@@ -61,12 +61,12 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < maxOrders; i++)
             {
-                //if (ordersInInventory[i] == Orders.Empty)
-                //{
-                //    Debug.Log("Slot " + i + " is empty; adding " + orderToAdd.name);
-                //    ordersInInventory[i] = orderToAdd;
-                //    break;
-                //}
+                if (ordersInInventory[i] == null)
+                {
+                    Debug.Log("Slot " + i + " is empty; adding " + orderToAdd.name);
+                    ordersInInventory[i] = orderToAdd;
+                    break;
+                }
             }
             currentOrdersInInventory++;
         }
@@ -93,7 +93,7 @@ public class Inventory : MonoBehaviour
     public void RemoveFromInventory(int orderToRemove)
     {
         Debug.Log(ordersInInventory[orderToRemove].name + " removed from inventory");
-        //ordersInInventory[orderToRemove] = Orders.Empty;
+        ordersInInventory[orderToRemove] = null;
         currentOrdersInInventory--;
     }
 
@@ -101,7 +101,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < maxOrders; i++)
         {
-            //ordersInInventory[i] = Orders.Empty;
+            ordersInInventory[i] = null;
         }
     }
 }

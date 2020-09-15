@@ -13,7 +13,20 @@ public class OrderListControl : MonoBehaviour
 
     private List<GameObject> Order;
 
-    void Start()
+    private void Start()
+    {
+        for (int i = 1; i <= 4; i++)
+        {
+            GameObject order = Instantiate(orderTemplate) as GameObject;
+            order.SetActive(true);
+
+            order.GetComponent<OrderListButton>().SetText("Order #" + 1);
+
+            order.transform.SetParent(orderTemplate.transform.parent, false);
+        }
+    }
+
+    /* void Start()
     {
         Order = new List<GameObject>();
 
@@ -37,8 +50,8 @@ public class OrderListControl : MonoBehaviour
                 order.transform.SetParent(orderTemplate.transform.parent, false);
             }
         }
-    }
-    
+    }*/
+
 
     public void orderClicked(string myTextString)
     {

@@ -196,6 +196,10 @@ public class GameManager : MonoBehaviour
     }
     public string Tod
     {
+        get
+        {
+            return  TOD;
+        }
         set
         {
             TOD = value;
