@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/ShiftUnity/[Ll]ibrary/
+-f/ShiftUnity/[Ll]ibrary/
 /ShiftUnity/[Tt]emp/
 /ShiftUnity/[Oo]bj/
 /ShiftUnity/[Bb]uild/
@@ -70,6 +70,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /ShiftUnity/Library/metadata/
-/ShiftUnity/Library/ShaderCache/
+-f/ShiftUnity/Library/ShaderCache/
  /ShiftUnity/[Ll]ibrary/metadata/
  /ShiftUnity/[Ll]ibrary/ShaderCache/
