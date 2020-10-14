@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659bbcc882b47a64bbd217edfc561cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  o1: {fileID: -927199367670048503, guid: 08f8ccb5eb801e94f9a5ab121851315f, type: 3}
-  o2: {fileID: -927199367670048503, guid: 62f48f24ffabe5c4a94ba27023bb1e1b, type: 3}
+  o1: {fileID: 8789854119085852405, guid: 4b580d578b8d2004486cb82894bc938f, type: 3}
+  o2: {fileID: 6050159546110934478, guid: e217cdfaea2010a40904374f08552388, type: 3}
   o3: {fileID: 6271951529962249890, guid: 96f98b4bec9ec8348b870b9ff66d1676, type: 3}
   oList: []
 --- !u!208 &-5971979486627015086

@@ -9,7 +9,10 @@ public class randomObstcl : MonoBehaviour
     public GameObject o2;
     public GameObject o3;
 
-    public List<GameObject> oList;
+    public bool manualSpawn;
+    public int spawnInt;
+
+    List<GameObject> oList;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +22,14 @@ public class randomObstcl : MonoBehaviour
         oList.Add(o2);
         oList.Add(o3);
 
-        Instantiate(oList[Random.Range(0, 3)], this.transform);
+        if (manualSpawn)
+        {
+            Instantiate(oList[spawnInt], this.transform);
+        }
+        else
+        {
+            Instantiate(oList[Random.Range(0, 3)], this.transform);
+        }
     }
 
     // Update is called once per frame
