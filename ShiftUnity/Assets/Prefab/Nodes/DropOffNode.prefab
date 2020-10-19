@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4997686890908489465}
   m_Layer: 0
   m_Name: DropOffNode
-  m_TagString: DropOff
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

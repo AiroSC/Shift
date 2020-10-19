@@ -44,7 +44,14 @@ public class OrderWaypoint : MonoBehaviour
 
         if (target == null)
         {
-            target = dm.markPos;
+            if (GameObject.FindGameObjectWithTag("PickUp"))
+            {
+                target = GameObject.FindGameObjectWithTag("PickUp").transform;
+            }
+           else
+            {
+                target = GameObject.FindGameObjectWithTag("DropOff").transform;
+            }
 
         }
         else
