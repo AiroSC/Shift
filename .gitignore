@@ -69,6 +69,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/ShiftUnity/Library/ 
+/ShiftUnity/[Ll]ibrary/
 /ShiftUnity/Library/metadata/
 /ShiftUnity/Library/ShaderCache/
  /ShiftUnity/[Ll]ibrary/metadata/
