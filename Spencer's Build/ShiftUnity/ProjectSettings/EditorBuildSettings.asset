@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Main Menu.unity
+    guid: 4b37b4c5da0943442b32de82107a4c97
+  - enabled: 0
+    path: Assets/Scenes/Game.unity
+    guid: 9cfce12ca2fb96e47bdde239a1e66794
+  - enabled: 0
+    path: Assets/Scenes/GameOver.unity
+    guid: 1c1edaa1a4ee21448aad52aedcb9e6cf
+  - enabled: 0
+    path: Assets/Scenes/ShiftSelect.unity
+    guid: feaf08d7ab61203438e399463d1f831b
+  - enabled: 0
+    path: Assets/Scenes/ModelPlayground.unity
+    guid: 09a9b9821fbe44946bf4a31a5a9e560d
+  - enabled: 1
+    path: Assets/Scenes/Shift Whitebox.unity
+    guid: 08fcd96b6228c0f4ea835157d7b79691
+  m_configObjects: {}
